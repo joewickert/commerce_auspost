@@ -38,7 +38,7 @@ Until this is officially merged into the existing `commerce_auspost` module, you
   "repositories": [
     {
       "type": "vcs",
-      "url": "https://github.com/Sitback/commerce_auspost"
+      "url": "https://github.com/joewickert/commerce_auspost"
     }
   ]
 }
@@ -49,7 +49,7 @@ Until this is officially merged into the existing `commerce_auspost` module, you
 ```json
 {
   "require": {
-    "drupal/commerce_auspost": "dev-8.x-1.x"
+    "drupal/commerce_auspost": "dev-8.x-1.0-beta2"
   }
 }
 ```
