@@ -19,7 +19,7 @@
     "ext-bcmath": "*",
     "commerceguys/enum": "^1.0",
     "drupal/commerce": "~2",
-    "drupal/commerce_shipping": "8.x-2.0-beta8",
+    "drupal/commerce_shipping": "2.0-beta8",
     "drupal/physical": "~1",
     "dvdoug/BoxPacker": "^2.3",
     "fontis/auspost-api-php": "^1.0"
