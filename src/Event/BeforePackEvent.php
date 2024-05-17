@@ -39,7 +39,7 @@ class BeforePackEvent extends Event {
    * @param Price $postage
    *   Postage prior to packing.
    */
-  public function __construct(ShipmentInterface $shipment, Price $postage) {
+  public function __construct(shipmentInterface $shipment, Price $postage) {
     $this->orderItems = $shipment->getOrder()->getItems();
     $this->postage = $postage;
   }
