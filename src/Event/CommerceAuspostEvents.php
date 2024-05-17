@@ -2,7 +2,7 @@
 
 namespace Drupal\commerce_auspost\Event;
 
-use Auspost\Common\Enum;
+use Fontis\Auspost\Model\Enum;
 
 /**
  * Class CommerceAuspostEvents
@@ -24,6 +24,6 @@ final class CommerceAuspostEvents extends Enum {
    *
    * @var string
    */
-  const BEFORE_PACK = 'commerce_auspost.before_pack';
+  public const BEFORE_PACK = 'commerce_auspost.before_pack';
 
 }
