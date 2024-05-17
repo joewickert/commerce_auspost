@@ -87,7 +87,7 @@ class PackableCommercePackageType implements Box {
   /**
    * {@inheritdoc}
    */
-  public function getReference() {
+  public function getReference(): string {
     $label = $this->packageType['label'];
     if ($label instanceof TranslatableMarkup) {
       $label = $label->render();
@@ -98,7 +98,7 @@ class PackableCommercePackageType implements Box {
   /**
    * {@inheritdoc}
    */
-  public function getOuterWidth() {
+  public function getOuterWidth(): int {
     // Commerce doesn't support packaging wall thicknesses so we assume that
     // this is equivalent to the inner dimension.
     return $this->getInnerWidth();
@@ -107,7 +107,7 @@ class PackableCommercePackageType implements Box {
   /**
    * {@inheritdoc}
    */
-  public function getOuterLength() {
+  public function getOuterLength(): int {
     // Commerce doesn't support packaging wall thicknesses so we assume that
     // this is equivalent to the inner dimension.
     return $this->getInnerLength();
@@ -116,7 +116,7 @@ class PackableCommercePackageType implements Box {
   /**
    * {@inheritdoc}
    */
-  public function getOuterDepth() {
+  public function getOuterDepth(): int {
     // Commerce doesn't support packaging wall thicknesses so we assume that
     // this is equivalent to the inner dimension.
     return $this->getInnerDepth();
@@ -125,7 +125,7 @@ class PackableCommercePackageType implements Box {
   /**
    * {@inheritdoc}
    */
-  public function getEmptyWeight() {
+  public function getEmptyWeight(): int {
     $weight = new Weight(
       $this->packageType['weight']['number'],
       $this->packageType['weight']['unit']
@@ -138,21 +138,21 @@ class PackableCommercePackageType implements Box {
   /**
    * {@inheritdoc}
    */
-  public function getInnerWidth() {
+  public function getInnerWidth(): int {
     return $this->getConvertedDimension('width');
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getInnerLength() {
+  public function getInnerLength(): int {
     return $this->getConvertedDimension('length');
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getInnerDepth() {
+  public function getInnerDepth(): int {
     return $this->getConvertedDimension('height');
   }
 
@@ -174,7 +174,7 @@ class PackableCommercePackageType implements Box {
    *
    * @throws \Drupal\commerce_auspost\PostageServices\ServiceSupportException
    */
-  public function getMaxWeight() {
+  public function getMaxWeight(): int {
     /** @var \Drupal\physical\Measurement[] $dimensions */
     $dimensions = $this->serviceSupport->getMaxParcelDimensions(
       $this->destination
