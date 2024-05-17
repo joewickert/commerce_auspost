@@ -421,8 +421,8 @@ class AusPost extends ShippingMethodBase {
 
       try {
         $event = $this->eventDispatcher->dispatch(
-          CommerceAuspostEvents::BEFORE_PACK,
-          new BeforePackEvent($shipment, $postagePrice)
+          new BeforePackEvent($shipment, $postagePrice),
+          CommerceAuspostEvents::BEFORE_PACK
         );
 
         // Update postage price.
