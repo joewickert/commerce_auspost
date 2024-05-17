@@ -1,7 +1,7 @@
 services:
   commerce_auspost.commerce_auspost_packer:
     class: Drupal\commerce_auspost\Packer\CommerceAusPostPacker
-    arguments: ['@entity_type.manager']
+    arguments: ['@entity_type.manager', '@string_translation', '@event_dispatcher']
     tags:
       - { name: commerce_shipping.packer, priority: 0 }
 
