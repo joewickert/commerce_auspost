@@ -1,12 +1,9 @@
 Drupal Commerce
 ===============
 
-Integrates Australia Post postage estimation with Drupal Commerce 2.x on Drupal 8.
+Integrates Australia Post postage estimation with Drupal Commerce 2.x on Drupal 10.
 
-Supporting all FedEx shipping services and an increasing number 
-of FedEx's special services, such as Hazardous Materials and Dry Ice,
-Commerce FedEx is designed to be your one-stop solution 
-for all of your FedEx shipping requirements.
+Work in progress but the d10-dev branch is working for standard domestic and international parcels.
 
 Until this module enters Beta, there will *not* be a 
 guaranteed upgrade path between versions. We are doing our best to 
@@ -14,12 +11,12 @@ minimize disruption, but pay
 close attention during upgrades as there may be cases where you will 
 have to reinstall the module.
 
-Please report any bugs on [the Github issue queue](https://github.com/Sitback/commerce_auspost/issues).
+Please report any bugs on [the Github issue queue](https://github.com/joewickert/commerce_auspost/issues).
 
 ## Requirements
 
 * [An Australia Post PAC API key](https://developers.auspost.com.au/apis/pacpcs-registration)
-* Drupal 8
+* Drupal 10
 * Drupal Commerce 2.x (latest version)
 * Commerce Shipping 2.x (latest version)
 * Physical Fields 1.x (latest version)
@@ -49,7 +46,7 @@ Until this is officially merged into the existing `commerce_auspost` module, you
 ```json
 {
   "require": {
-    "drupal/commerce_auspost": "dev-8.x-1.0-beta2"
+    "drupal/commerce_auspost": "dev-d10-dev"
   }
 }
 ```
@@ -72,13 +69,13 @@ Until this is officially merged into the existing `commerce_auspost` module, you
       },
       {
         "type": "vcs",
-        "url": "https://github.com/Sitback/commerce_auspost"
+        "url": "https://github.com/joewickert/commerce_auspost"
       }
     ],
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-      "drupal/commerce_auspost": "dev-8.x-1.x"
+      "drupal/commerce_auspost": "dev-d10-dev"
     }
 }
 ```
