@@ -17,7 +17,7 @@ class Response implements ResponseInterface {
   private $request;
 
   /**
-   * Raw API response from the AusPost library.
+   * API response from the AusPost library.
    *
    * @var array
    */
@@ -41,7 +41,7 @@ class Response implements ResponseInterface {
   /**
    * {@inheritdoc}
    */
-  public function setResponse(array $response) {
+  public function setResponse($response) {
     $this->response = $response;
     return $this;
   }
@@ -61,15 +61,7 @@ class Response implements ResponseInterface {
       throw new ResponseException('No API response is set.');
     }
 
-    if (!array_key_exists('postage_result', $this->response)) {
-      throw new ResponseException('API response does not include a valid result.');
-    }
-
-    if (!array_key_exists('total_cost', $this->response['postage_result'])) {
-      throw new ResponseException('API response does not include a total cost.');
-    }
-
-    return (float) $this->response['postage_result']['total_cost'];
+    return (float) $this->response->getTotalCost();
   }
 
 }
