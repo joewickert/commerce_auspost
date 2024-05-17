@@ -35,7 +35,7 @@ class PackableCommerceOrderItem implements Item {
   /**
    * {@inheritdoc}
    */
-  public function getDescription() {
+  public function getDescription(): string {
     return $this->orderItem->getTitle();
   }
 
@@ -45,7 +45,7 @@ class PackableCommerceOrderItem implements Item {
    * @throws \InvalidArgumentException
    * @throws \Drupal\Core\TypedData\Exception\MissingDataException
    */
-  public function getWidth() {
+  public function getWidth(): int {
     return $this->getDimension('width', LengthUnit::MILLIMETER);
   }
 
@@ -55,7 +55,7 @@ class PackableCommerceOrderItem implements Item {
    * @throws \InvalidArgumentException
    * @throws \Drupal\Core\TypedData\Exception\MissingDataException
    */
-  public function getLength() {
+  public function getLength(): int {
     return $this->getDimension('length', LengthUnit::MILLIMETER);
   }
 
@@ -65,7 +65,7 @@ class PackableCommerceOrderItem implements Item {
    * @throws \InvalidArgumentException
    * @throws \Drupal\Core\TypedData\Exception\MissingDataException
    */
-  public function getDepth() {
+  public function getDepth(): int {
     return $this->getDimension('height', LengthUnit::MILLIMETER);
   }
 
@@ -75,7 +75,7 @@ class PackableCommerceOrderItem implements Item {
    * @throws \InvalidArgumentException
    * @throws \Drupal\Core\TypedData\Exception\MissingDataException
    */
-  public function getWeight() {
+  public function getWeight(): int {
     $purchasedEntity = $this->orderItem->getPurchasedEntity();
     $values = $purchasedEntity->get('weight');
 
@@ -123,7 +123,7 @@ class PackableCommerceOrderItem implements Item {
   /**
    * {@inheritdoc}
    */
-  public function getKeepFlat() {
+  public function getKeepFlat(): bool {
     // Not currently supported, assume that no order item needs to be kept flat.
     return FALSE;
   }
