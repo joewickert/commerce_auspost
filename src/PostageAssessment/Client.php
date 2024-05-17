@@ -2,7 +2,17 @@
 
 namespace Drupal\commerce_auspost\PostageAssessment;
 
-use Auspost\Common\Auspost;
+use Fontis\Auspost\Api\Postage\Domestic\Letter\Cost\CalculationParams;
+use Fontis\Auspost\Api\Postage\Domestic\Parcel\Cost\CalculationParams as DomesticParcelCostParam;
+use Fontis\Auspost\Api\Postage\Domestic\Letter\Services\GetServicesParams;
+use Fontis\Auspost\Api\Postage\Domestic\Parcel\Services\GetServicesParams as DomesticParcelServicesParams;
+use Fontis\Auspost\Api\Postage\Domestic\Postcode\PostcodeSearchParams;
+use Fontis\Auspost\Api\Postage\International\Letter\Cost\CalculationParams as InternationalLetterCalculationParams;
+use Fontis\Auspost\Api\Postage\International\Letter\Services\GetServiceParams;
+use Fontis\Auspost\Api\Postage\International\Parcel\Cost\CalculationParams as InternationalParcelCalculationParams;
+use Fontis\Auspost\Api\Postage\International\Parcel\Services\GetServiceParams as InternationalParcelServiceParams;
+use Fontis\Auspost\Auspost;
+use Fontis\Auspost\Model\Postage\Enum\ServiceCode;
 
 /**
  * Defines an AusPost PAC client.
@@ -55,10 +65,7 @@ class Client implements ClientInterface {
     }
 
     if ($this->client === NULL) {
-      $this->client = Auspost::factory([
-        'developer_mode' => TRUE,
-        'auth_key' => $this->apiKey,
-      ])->get('postage');
+      $this->client = Auspost::create($this->apiKey);
     }
 
     return $this->client;
@@ -109,9 +116,23 @@ class Client implements ClientInterface {
     $method = 'calculate';
     if ($request->isDomestic()) {
       $method .= 'Domestic';
+      $parcelParam = new DomesticParcelCostParam(
+        $address->getShipperPostcode(),
+        $address->getRecipientPostcode(),
+        $dimensions['length'],
+        $dimensions['width'],
+        $dimensions['height'],
+        $dimensions['weight'],
+        ServiceCode::AUS_PARCEL_REGULAR
+      );  
     }
     else {
       $method .= 'International';
+      $parcelParam = new InternationalParcelCalculationParams(
+        $address->getRecipientCountrycode(),
+        $dimensions['weight'],
+        "INT_PARCEL_STD_OWN_PACKAGING"
+      );
     }
     if ($request->isParcel()) {
       $method .= 'Parcel';
@@ -122,7 +143,7 @@ class Client implements ClientInterface {
     $method .= 'Postage';
 
     // Errors are thrown but caught by the caller.
-    $apiResponse = $this->getClient()->{$method}($opts);
+    $apiResponse = $this->getClient()->postage()->{$method}($parcelParam);
 
     return (new Response())
       ->setRequest($request)
