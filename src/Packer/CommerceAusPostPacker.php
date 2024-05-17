@@ -92,7 +92,7 @@ class CommerceAusPostPacker extends DefaultPacker {
    * @throws \InvalidArgumentException
    * @throws \Drupal\Core\TypedData\Exception\MissingDataException
    */
-  private function getWeight(OrderItemInterface $orderItem) {
+  private function getWeight(OrderItemInterface $order_item) {
     $purchasedEntity = $order_item->getPurchasedEntity();
 
     if ($purchasedEntity->get('weight')->isEmpty()) {
