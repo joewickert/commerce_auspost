@@ -492,7 +492,7 @@ class AusPost extends ShippingMethodBase {
       );
 
       $rates[] = new ShippingRate([
-        'shipping_method_id' => $serviceId,
+        'shipping_method_id' => $this->parentEntity->id(),
         'service' => $service,
         'amount' => $postagePrice,
       ]);
