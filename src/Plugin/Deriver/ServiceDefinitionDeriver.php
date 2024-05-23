@@ -30,7 +30,7 @@ class ServiceDefinitionDeriver extends DeriverBase {
         'service_type' => $service['type'],
         'service_code' => $service['service_code'],
         'option_code' => $service['option_code'],
-        'sub_option_code' => $service['sub_option_code'],
+        'sub_option_code' => $service['sub_opt_code'],
         'extra_cover' => $service['extra_cover'],
       ];
 
