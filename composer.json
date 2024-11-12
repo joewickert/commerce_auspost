@@ -1,5 +1,5 @@
 {
-  "name": "joewickert/commerce_auspost",
+  "name": "drupal/commerce_auspost",
   "description": "Integrates Australia Post postage estimation with Commerce Shipping.",
   "type": "drupal-module",
   "license": "GPL-2.0+",
