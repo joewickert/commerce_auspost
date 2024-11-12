@@ -22,7 +22,7 @@
     "drupal/commerce_shipping": "~2",
     "drupal/physical": "~1",
     "dvdoug/BoxPacker": "^3",
-    "fontis/auspost-api-php": "^2.0"
+    "fontis/auspost-api-php": "dev-master"
   },
   "require-dev": {
     "drupal/coder": "^8.2"
