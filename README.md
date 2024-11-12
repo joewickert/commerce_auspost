@@ -28,7 +28,7 @@ dependencies installed on your Drupal 8 site, installing via a tarball from drup
 
 Until this is officially merged into the existing `commerce_auspost` module, you can install via the following instructions:
 
-* Edit your project's `composer.json` file and the following to the `repositories` property (if one doesn't exist, create one):
+* Edit your project's `composer.json` file and the following to the top of the `repositories` property before https://packages.drupal.org/8 so composer uses the custom repos first (if one doesn't exist, create one):
 
 ```json
 {
@@ -36,6 +36,10 @@ Until this is officially merged into the existing `commerce_auspost` module, you
     {
       "type": "vcs",
       "url": "https://github.com/joewickert/commerce_auspost"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/joewickert/auspost-api-php"
     }
   ]
 }
@@ -50,34 +54,10 @@ Until this is officially merged into the existing `commerce_auspost` module, you
   }
 }
 ```
+or run
 
-* An example `composer.json` would look like:
-
-```json
-{
-    "name": "chinthakagodawita/my-commerce-project",
-    "authors": [
-        {
-            "name": "Chin Godawita",
-            "email": "chin@sitback.com.au"
-        }
-    ],
-    "repositories": [
-      {
-        "type": "composer",
-        "url": "https://packages.drupal.org/8"
-      },
-      {
-        "type": "vcs",
-        "url": "https://github.com/joewickert/commerce_auspost"
-      }
-    ],
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "require": {
-      "drupal/commerce_auspost": "dev-d10-dev"
-    }
-}
+```
+composer require "drupal/commerce_auspost":"dev-d10-dev"
 ```
 
 * Then simply enable the "AusPost (Commerce Shipping)" module and visit 
